@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import SingleApplication from './SingleApplication';
-import { getSingleApplicationFixture } from './__fixtures__/applications.fixture';
+import { getSingleApplicationFixture } from '../__fixtures__/applications.fixture';
 import styles from './Applications.module.css';
-import { Button } from './ui/Button/Button';
+import { Button } from '../ui/Button/Button';
 import axios from 'axios';
-import { Application } from './types';
+import { Application } from '../types';
 
 const Applications = () => {
 	const [applications, setApplications] = useState<Application[]>([]);

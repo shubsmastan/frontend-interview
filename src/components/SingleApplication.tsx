@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SingleApplication.module.css';
-import { Application } from './types';
+import { Application } from '../types';
 
 interface Props {
 	application: Application;

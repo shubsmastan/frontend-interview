@@ -14,7 +14,7 @@ const Applications = () => {
 	const getApplicationData = async (page: number) => {
 		try {
 			const { data } = await axios.get(
-				`http://localhost:3001/api/appliations?_page=${page}&_limit=5`
+				`http://localhost:3001/api/applications?_page=${page}&_limit=5`
 			);
 			return data;
 		} catch (err) {

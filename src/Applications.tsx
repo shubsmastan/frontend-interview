@@ -4,9 +4,10 @@ import { getSingleApplicationFixture } from './__fixtures__/applications.fixture
 import styles from './Applications.module.css';
 import { Button } from './ui/Button/Button';
 import axios from 'axios';
+import { Application } from './types';
 
 const Applications = () => {
-	const [applications, setApplications] = useState<unknown[]>([]);
+	const [applications, setApplications] = useState<Application[]>([]);
 	const [pages, setPages] = useState(1);
 	const [error, setError] = useState('');
 

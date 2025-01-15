@@ -8,15 +8,17 @@ import axios from 'axios';
 const Applications = () => {
 	const [applications, setApplications] = useState<unknown[]>([]);
 	const [pages, setPages] = useState(1);
+	const [error, setError] = useState('');
 
 	const getApplicationData = async (page: number) => {
 		try {
 			const { data } = await axios.get(
-				`http://localhost:3001/api/applications?_page=${page}&_limit=5`
+				`http://localhost:3001/api/appliations?_page=${page}&_limit=5`
 			);
 			return data;
 		} catch (err) {
-			console.log('There was an error fetching the application data.');
+			setError('There was an error fetching the applications data.');
+			console.log(error);
 		}
 	};
 
@@ -26,6 +28,10 @@ const Applications = () => {
 			setApplications(apps);
 		})();
 	}, []);
+
+	if (error) {
+		return <div className={styles.Applications}>{error}</div>;
+	}
 
 	return (
 		<div className={styles.Applications}>

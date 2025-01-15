@@ -6,22 +6,25 @@ import { Button } from './ui/Button/Button';
 import axios from 'axios';
 
 const Applications = () => {
-	const [applications, setApplications] = useState([]);
-	// const applications = getSingleApplicationFixture;
+	const [applications, setApplications] = useState<unknown[]>([]);
+	const [pages, setPages] = useState(1);
+
+	const getApplicationData = async (page: number) => {
+		try {
+			const { data } = await axios.get(
+				`http://localhost:3001/api/applications?_page=${page}&_limit=5`
+			);
+			return data;
+		} catch (err) {
+			console.log('There was an error fetching the application data.');
+		}
+	};
+
 	useEffect(() => {
-		const getApplicationData = async () => {
-			try {
-				const { data } = await axios.get(
-					'http://localhost:3001/api/applications?_page=2&_limit=5'
-				);
-				setApplications(data);
-			} catch (err) {
-				console.log(
-					'There was an error fetching the application data.'
-				);
-			}
-		};
-		getApplicationData();
+		(async () => {
+			const apps = await getApplicationData(1);
+			setApplications(apps);
+		})();
 	}, []);
 
 	return (
@@ -38,8 +41,10 @@ const Applications = () => {
 				}}>
 				<Button
 					className={''}
-					onClick={() => {
-						// do stuff
+					onClick={async () => {
+						const moreApps = await getApplicationData(pages + 1);
+						setApplications([...applications, ...moreApps]);
+						setPages(pages + 1);
 					}}>
 					Load more
 				</Button>

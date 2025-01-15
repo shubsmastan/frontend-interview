@@ -39,13 +39,7 @@ const Applications = () => {
 			{applications.map(app => (
 				<SingleApplication key={app.id} application={app} />
 			))}
-			<div
-				style={{
-					width: '100%',
-					display: 'flex',
-					justifyContent: 'center',
-					marginTop: '10px',
-				}}>
+			<div className={styles.Footer}>
 				<Button
 					className={''}
 					onClick={async () => {

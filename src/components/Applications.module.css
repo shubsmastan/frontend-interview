@@ -1,5 +1,13 @@
 .Applications {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.Footer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
 }

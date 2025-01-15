@@ -41,7 +41,7 @@ const Applications = () => {
 			))}
 			<div className={styles.Footer}>
 				<Button
-					className={''}
+					aria-label='Load more'
 					onClick={async () => {
 						const moreApps = await getApplicationData(pages + 1);
 						setApplications([...applications, ...moreApps]);
